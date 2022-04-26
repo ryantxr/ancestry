@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="font-bold">
+                <div class="font-bold text-center">
                     Children
                     @if ( $children->count() > 0 )
                     ({{ $children->count() }})
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="font-bold">
+                <div class="font-bold text-center">
                     @if ( $marriages->count() > 1 )
                     Marriages(s)
                     @else
@@ -80,19 +80,19 @@
                 @endif
             </div>
             <div class="">
-                <div class="font-bold">
+                <div class="font-bold text-center">
                     Parents
                 </div>
                 <div class="">
                     <div class="">
-                        Father:
+                        <div class="text-center">Father:</div>
                         @if ( ! empty($father) )
                             <div class=""><a class="link" href="{{ $father->id }}">{{ $father->id }}</a> <a class="link" href="{{ $father->id }}">{{ $father->fullName }}</a></div>
                             <div class="text-gray-600">(b. {{ ($father->born) ? $father->born : 'NA' }}; d. {{ ($father->died) ? $father->died : 'NA' }})</div>
                         @else NA @endif
                     </div>
                     <div class="">
-                        Mother:
+                        <div class="text-center">Mother:</div>
                         @if ( ! empty($mother) )
                             <div class=""><a class="link" href="{{ $mother->id }}">{{ $mother->id }}</a> <a class="link" href="{{ $mother->id }}">{{ $mother->fullName }}</a></div>
                             <div class="text-gray-600">(b. {{ ($mother->born) ? $mother->born : 'NA' }}; d. {{ ($mother->died) ? $mother->died : 'NA' }})</div>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="font-bold">
+                <div class="font-bold text-center">
                     Notes
                 </div>
                 <div class="">
