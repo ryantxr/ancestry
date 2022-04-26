@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div>
-        <div class="px-2 py-2 mx-auto text-lg max-w-7xl sm:px-6 lg:px-8 sm:text-base">
+        <div class="px-2 py-2 mx-auto space-y-3 text-lg max-w-7xl sm:px-6 lg:px-8 sm:text-base">
             <div class="">
                 <div class="">
                     <span class="inline-block font-bold">ID:</span> <span class="">{{ $person->id }}</span>
@@ -33,7 +33,7 @@
                     ({{ $children->count() }})
                     @endif
                 </div>
-                <div class="">
+                <div class="space-y-2">
                     @forelse($children as $child)
                         <div class="">
                             <div class="flex space-x-2">
@@ -44,10 +44,8 @@
                                     <a class="link" href="{{ $child->id }}">{{ $child->fullName }} {{ $child->suffix }}</a>
                                 </div>
                             </div>
-                            <div class="text-gray-700">
-                                (
-                                    b. {{ ($child->born) ? $child->born : 'NA' }}; d. {{ ($child->died) ? $child->died : 'NA' }}
-                                )
+                            <div class="text-base text-gray-700">
+                                (b. {{ ($child->born) ? $child->born : 'NA' }}; d. {{ ($child->died) ? $child->died : 'NA' }})
                             </div>
                         </div>
                     @empty
@@ -66,17 +64,17 @@
                 </div>
                 @if ( $marriages->count() > 0 )
                     @foreach($marriages as $index => $marriage)
-                        <div class="flex">
+                        <div class="sm:flex">
                         @php
                             $spouse = $marriage->spouse($person->id);
                         @endphp
                             <div class="">
-                                To. {{ optional($spouse)->fullName }}
                                 @if ( ! empty($spouse) )
-                                (<a class="link" href="{{ $spouse->id }}">{{ optional($spouse)->id }}</a>)
+                                <a class="link" href="{{ $spouse->id }}">{{ optional($spouse)->fullName }}</a>
+                                <span class="text-sm">(<a class="link" href="{{ $spouse->id }}">{{ optional($spouse)->id }}</a>)</span>
                                 @endif
                             </div>
-                            <div class="pl-2">{{ $marriage->date }}</div>
+                            <div class="text-sm text-gray-600">{{ $marriage->date }}</div>
                         </div>
                     @endforeach
                 @endif
