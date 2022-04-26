@@ -73,7 +73,7 @@ class Person extends Model
         }
         if ( $this->born_month ) {
             $c = Carbon::create(2000, $this->born_month, 1);
-            $str .= $c->format('F ');
+            $str .= $c->format('M ');
         }
         $str .= $this->born_year;
         return $str;
