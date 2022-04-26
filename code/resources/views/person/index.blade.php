@@ -1,24 +1,36 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List') }}
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            {{ __('Index') }}
         </h2>
     </x-slot>
     <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="py-2 mx-auto space-y-1 text-lg sm:text-base max-w-7xl sm:px-6 lg:px-8">
             @foreach( $persons as $person )
-            <div class="">
-                <a class="link" href="/persons/{{ $person->id }}">{{ $person->id }}</a>
-                <span class="text-green-600 font-bold">{{ $person->fullName }} {{ $person->suffix }}</span>
-                
-                @if ( $person->born || $person->died )
-                (
-                    @if ( $person->born ) b. {{ $person->born }} @endif
-                    @if ( $person->died ) @if ( $person->born ) - @endif d. {{ $person->died }} @endif
-                    @if ( $person->deathAge ) age: {{ $person->deathAge }} @endif
-                )
-                @endif
-            </div>
+            <div class="" rel="person"> <!-- person -->
+                <div class="px-1 sm:flex">
+                    <div class="">
+                        <a class="link" href="/persons/{{ $person->id }}">{{ $person->id }}</a>
+                        <a class="link" href="/persons/{{ $person->id }}">{{ $person->fullName }} {{ $person->suffix }}</a>
+                    </div>
+                    <div class=""><!-- dates -->
+                        @if ( $person->born || $person->died )
+                            <span class="hidden sm:inline">(</span>
+                            @if ( $person->born ) <div class="text-gray-600">b. {{ $person->born }}</div> @endif
+                            @if ( $person->died )
+                                <div class="text-gray-600"><!-- died -->
+                                    @if ( $person->born )
+                                        <span class="hidden sm:inline">-</span>
+                                    @endif
+                                    d. {{ $person->died }}
+                                    @if ( $person->deathAge ) age: {{ $person->deathAge }} @endif
+                                    <span class="hidden sm:inline">)</span>
+                                </div><!-- died -->
+                            @endif
+                        @endif
+                    </div><!-- dates -->
+                </div>
+            </div><!-- person -->
             @endforeach
         </div>
     </div>

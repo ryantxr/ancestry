@@ -1,29 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $person->fullName }} {{ $person->suffix }}
+        <h2 class="leading-tight text-gray-800 ">
+            <span class="text-xl font-semibold">{{ $person->fullName }} {{ $person->suffix }}</span> <span class="text-base text-gray-500">{{ $person->ageSpan }}<span>
         </h2>
     </x-slot>
     <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div>
+        <div class="px-2 py-2 mx-auto text-lg max-w-7xl sm:px-6 lg:px-8 sm:text-base">
+            <div class="">
                 <div class="">
-                    <span class="font-bold">ID:</span> {{ $person->id }}
+                    <span class="inline-block font-bold">ID:</span> <span class="">{{ $person->id }}</span>
                 </div>
                 <div class="">
-                    <span class="font-bold">First name:</span> {{ $person->first }}
+                    <span class="inline-block font-bold">First name:</span> <span class="">{{ $person->first }}</span>
                 </div>
                 <div class="">
-                    <span class="font-bold">Middle names:</span> {{ $person->middle_names }}
+                    <span class="inline-block font-bold">Middle names:</span> <span class="">{{ $person->middle_names }}</span>
                 </div>
                 <div class="">
-                    <span class="font-bold">Last name:</span> {{ $person->last }}
+                    <span class="inline-block font-bold">Last name:</span> <span class="">{{ $person->last }}</span>
                 </div>
                 <div class="">
-                    <span class="font-bold">Born:</span> {{ $person->born }} {{ $person->born_where }}
+                    <span class="inline-block font-bold">Born:</span> <span class="">{{ $person->born }} {{ $person->born_where }}</span>
                 </div>
                 <div class="">
-                    <span class="font-bold">Died:</span> {{ $person->died }} {{ $person->died_where }} (age: {{ $person->deathAge }})
+                    <span class="inline-block font-bold">Died:</span> <span class="">{{ $person->died }} {{ $person->died_where }} (age: {{ $person->deathAge }})</span>
                 </div>
             </div>
             <div class="">
@@ -35,15 +35,19 @@
                 </div>
                 <div class="">
                     @forelse($children as $child)
-                        <div class="flex">
-                            <div class=" w-12">
-                                <a class="link" href="{{ $child->id }}">{{ $child->id }}</a>
+                        <div class="">
+                            <div class="flex space-x-2">
+                                <div class="">
+                                    <a class="link" href="{{ $child->id }}">{{ $child->id }}</a>
+                                </div>
+                                <div class="">
+                                    <a class="link" href="{{ $child->id }}">{{ $child->fullName }} {{ $child->suffix }}</a>
+                                </div>
                             </div>
-                            <div class=" w-96">
-                            {{ $child->fullName }} {{ $child->suffix }}
-                            </div>
-                            <div class=" w-96">
-                                (b. {{ $child->born }}; d. {{ ($child->died) ? $child->died : 'unknown' }})
+                            <div class="text-gray-700">
+                                (
+                                    b. {{ ($child->born) ? $child->born : 'NA' }}; d. {{ ($child->died) ? $child->died : 'NA' }}
+                                )
                             </div>
                         </div>
                     @empty
@@ -83,10 +87,18 @@
                 </div>
                 <div class="">
                     <div class="">
-                        Father: @if ( ! empty($father) ) <a class="link" href="{{ $father->id }}">{{ $father->id }}</a> {{ $father->fullName }} (b. {{ ($father->born) ? $father->born : 'unknown' }}; d. {{ ($father->died) ? $father->died : 'unknown' }})  @else NA @endif
+                        Father:
+                        @if ( ! empty($father) )
+                            <div class=""><a class="link" href="{{ $father->id }}">{{ $father->id }}</a> <a class="link" href="{{ $father->id }}">{{ $father->fullName }}</a></div>
+                            <div class="text-gray-600">(b. {{ ($father->born) ? $father->born : 'NA' }}; d. {{ ($father->died) ? $father->died : 'NA' }})</div>
+                        @else NA @endif
                     </div>
                     <div class="">
-                        Mother: @if ( ! empty($mother) ) <a class="link" href="{{ $mother->id }}">{{ $mother->id }}</a> {{ $mother->fullName }} (b. {{ ($mother->born) ? $mother->born : 'unknown' }}; d. {{ ($mother->died) ? $mother->died : 'unknown' }}) @else NA @endif
+                        Mother:
+                        @if ( ! empty($mother) )
+                            <div class=""><a class="link" href="{{ $mother->id }}">{{ $mother->id }}</a> <a class="link" href="{{ $mother->id }}">{{ $mother->fullName }}</a></div>
+                            <div class="text-gray-600">(b. {{ ($mother->born) ? $mother->born : 'NA' }}; d. {{ ($mother->died) ? $mother->died : 'NA' }})</div>
+                        @else NA @endif
                     </div>
                 </div>
             </div>

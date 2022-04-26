@@ -79,6 +79,24 @@ class Person extends Model
         return $str;
     }
 
+    public function getAgeSpanAttribute()
+    {
+        $str = '';
+        if ( $this->born_circa ) {
+            $str .= 'circa ';
+        }
+        $sep = null;
+        if ( $this->born_year )
+        {
+            $str .= $this->born_year;
+            $sep = ' - ';
+        }
+        if ( $this->died_year ) {
+            $str .= $sep . $this->died_year;
+        }
+        return $str;
+    }
+
     public function getDiedAttribute()
     {
         $str = '';
@@ -88,7 +106,7 @@ class Person extends Model
         }
         if ( $this->died_month ) {
             $c = Carbon::create(2000, $this->died_month, 1);
-            $str .= $c->format('F ');
+            $str .= $c->format('M ');
         }
         $str .= $this->died_year;
         return $str;

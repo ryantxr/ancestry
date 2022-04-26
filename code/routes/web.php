@@ -25,10 +25,10 @@ Route::middleware([
     ])->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
-    })->name('dashboard');
-    Route::get('/persons', [\App\Http\Controllers\PersonController::class, 'index'])->name('person.index');
-    Route::get('/persons/{id}', [\App\Http\Controllers\PersonController::class, 'show'])->name('person.show');
-});
+        })->name('dashboard');
+        Route::get('/persons', [\App\Http\Controllers\PersonController::class, 'index'])->name('person.index');
+        Route::get('/persons/{id}', [\App\Http\Controllers\PersonController::class, 'show'])->name('person.show');
+    });
 // Admins only
 Route::middleware([
     'auth:sanctum',
