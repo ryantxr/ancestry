@@ -6,9 +6,13 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/views/*.blade.php',
     ],
     safelist: [
-        'hidden', 'block', 'inline-block',
+        'hidden','xs:hidden','sm:hidden','md:hidden','lg:hidden','xl:hidden',
+        'block','xs:block','sm:block','md:block','lg:block','xl:block',
+        'inline','xs:inline','sm:inline','md:inline','lg:inline','xl:inline',
+        'inline-block',
         {
             pattern: /^m[trblxy]?-[0-9]+$/,
             variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']
