@@ -1,10 +1,13 @@
-<x-app-layout>
+
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Index') }}
         </h2>
     </x-slot>
     <div>
+        <div class="py-2 mx-auto space-y-1 text-lg sm:text-base max-w-7xl sm:px-6 lg:px-8">
+            <input class="px-2 py-1 border" wire:model.debounce.500="search" placeholder="Search">
+        </div>
         <div class="py-2 mx-auto space-y-1 text-lg sm:text-base max-w-7xl sm:px-6 lg:px-8">
             @foreach( $persons as $person )
             <div class="" rel="person"> <!-- person -->
@@ -34,5 +37,6 @@
             @endforeach
         </div>
     </div>
-</x-app-layout>
+
+
 

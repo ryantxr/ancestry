@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="font-bold text-center">
+                <div class="font-bold text-center sm:text-left">
                     Children
                     @if ( $children->count() > 0 )
                     ({{ $children->count() }})
@@ -35,7 +35,7 @@
                 </div>
                 <div class="space-y-2">
                     @forelse($children as $child)
-                        <div class="">
+                        <div class="sm:flex">
                             <div class="flex space-x-2">
                                 <div class="">
                                     <a class="link" href="{{ $child->id }}">{{ $child->id }}</a>
@@ -50,12 +50,12 @@
                         </div>
                     @empty
                     {{-- bg-yellow-100 bg-green-100 --}}
-                        <div class="">None</div>
+                        <div class="text-gray-600">Unknown</div>
                     @endforelse
                 </div>
             </div>
             <div class="">
-                <div class="font-bold text-center">
+                <div class="font-bold text-center sm:text-left">
                     @if ( $marriages->count() > 1 )
                     Marriages(s)
                     @else
@@ -77,22 +77,24 @@
                             <div class="text-sm text-gray-600">{{ $marriage->date }}</div>
                         </div>
                     @endforeach
+                @else
+                    <div class="text-gray-600">Unknown</div>
                 @endif
             </div>
             <div class="">
-                <div class="font-bold text-center">
+                <div class="font-bold text-center sm:text-left">
                     Parents
                 </div>
                 <div class="">
                     <div class="">
-                        <div class="text-center">Father:</div>
+                        <div class="text-center sm:text-left">Father:</div>
                         @if ( ! empty($father) )
                             <div class=""><a class="link" href="{{ $father->id }}">{{ $father->id }}</a> <a class="link" href="{{ $father->id }}">{{ $father->fullName }}</a></div>
                             <div class="text-gray-600">(b. {{ ($father->born) ? $father->born : 'NA' }}; d. {{ ($father->died) ? $father->died : 'NA' }})</div>
                         @else NA @endif
                     </div>
                     <div class="">
-                        <div class="text-center">Mother:</div>
+                        <div class="text-center sm:text-left">Mother:</div>
                         @if ( ! empty($mother) )
                             <div class=""><a class="link" href="{{ $mother->id }}">{{ $mother->id }}</a> <a class="link" href="{{ $mother->id }}">{{ $mother->fullName }}</a></div>
                             <div class="text-gray-600">(b. {{ ($mother->born) ? $mother->born : 'NA' }}; d. {{ ($mother->died) ? $mother->died : 'NA' }})</div>
@@ -101,7 +103,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="font-bold text-center">
+                <div class="font-bold text-center sm:text-left">
                     Notes
                 </div>
                 <div class="">

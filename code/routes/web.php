@@ -26,8 +26,10 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-        Route::get('/persons', [\App\Http\Controllers\PersonController::class, 'index'])->name('person.index');
+        // Route::get('/persons', [\App\Http\Controllers\PersonController::class, 'index'])->name('person.index');
         Route::get('/persons/{id}', [\App\Http\Controllers\PersonController::class, 'show'])->name('person.show');
+
+        Route::get('/persons', \App\Http\Livewire\Person\Index::class)->name('person.index');
     });
 // Admins only
 Route::middleware([
@@ -38,3 +40,4 @@ Route::middleware([
 ])->group(function () {
     // Route::get('/users', UserManagement::class)->name('userManagement');
 });
+
