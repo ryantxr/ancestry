@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
     <div>
+        
         <div class="py-2 mx-auto space-y-1 text-lg sm:text-base max-w-7xl sm:px-6 lg:px-8">
             <input class="px-2 py-1 border" wire:model.debounce.500="search" placeholder="Search">
         </div>
@@ -13,8 +14,8 @@
             <div class="" rel="person"> <!-- person -->
                 <div class="px-1 sm:flex">
                     <div class="">
-                        <a class="link" href="/persons/{{ $person->id }}">{{ $person->id }}</a>
-                        <a class="link" href="/persons/{{ $person->id }}">{{ $person->fullName }} {{ $person->suffix }}</a>
+                        <a class="link" href="/persons/show/{{ $person->id }}">{{ $person->id }}</a>
+                        <a class="link" href="/persons/show/{{ $person->id }}">{{ $person->fullName }} {{ $person->suffix }}</a>
                     </div>
                     <div class=""><!-- dates -->
                         @if ( $person->born || $person->died )

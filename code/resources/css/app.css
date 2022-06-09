@@ -2,6 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.btn {
+    @apply p-1 text-white bg-blue-600 rounded;
+}
 .link {
     @apply text-blue-600;
 }

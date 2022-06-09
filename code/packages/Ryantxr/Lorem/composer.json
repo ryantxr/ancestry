@@ -1,0 +1,41 @@
+{
+    "name": "ryantxr/lorem",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@email.com",
+            "homepage": "http://author.com"
+        }
+    ],
+    "homepage": "https://github.com/ryantxr/lorem",
+    "keywords": ["Laravel", "Lorem"],
+    "require": {
+        "illuminate/support": "~8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ryantxr\\Lorem\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ryantxr\\Lorem\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ryantxr\\Lorem\\LoremServiceProvider"
+            ],
+            "aliases": {
+                "Lorem": "Ryantxr\\Lorem\\Facades\\Lorem"
+            }
+        }
+    }
+}

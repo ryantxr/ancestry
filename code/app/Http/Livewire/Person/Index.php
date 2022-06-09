@@ -28,8 +28,9 @@ class Index extends Component
     protected function query($search = null)
     {
         if ( $search ) {
-            $searchResults = Person::where('last', 'like', $search . '%')
+            $searchResults = Person::where('last', 'like', '%' . $search . '%')
                 ->orWhere('first', 'like', $search . '%')
+                ->orWhere('middle_names', 'like', '%' . $search . '%')
                 ->get();
             return $searchResults;
         }

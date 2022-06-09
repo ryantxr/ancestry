@@ -27,9 +27,13 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
         // Route::get('/persons', [\App\Http\Controllers\PersonController::class, 'index'])->name('person.index');
-        Route::get('/persons/{id}', [\App\Http\Controllers\PersonController::class, 'show'])->name('person.show');
-
+        // Route::get('/persons/{id}', [\App\Http\Controllers\PersonController::class, 'show'])->name('person.show');
+        
+        Route::get('/persons/show/{id}', \App\Http\Livewire\Person\Show::class)->name('person.show');
+        Route::get('/persons/edit/{id}', \App\Http\Livewire\Person\Edit::class)->name('person.edit');
         Route::get('/persons', \App\Http\Livewire\Person\Index::class)->name('person.index');
+        Route::get('/persons/create', \App\Http\Livewire\Person\Create::class)->name('person.create');
+        Route::get('/persons/temp', \App\Http\Livewire\Person\Temp::class)->name('person.temp');
     });
 // Admins only
 Route::middleware([

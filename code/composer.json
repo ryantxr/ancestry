@@ -12,11 +12,14 @@
         "laravel/jetstream": "^2.7",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "ryantxr/lorem": "dev-main",
+        "ryantxr/quake": "dev-main"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "jeroen-g/laravel-packager": "^2.8",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
@@ -60,5 +63,21 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "ryantxr/quake": {
+            "type": "path",
+            "url": "/ryantxr/ancestry/code/packages/Ryantxr/Quake",
+            "options": {
+                "symlink": true
+            }
+        },
+        "ryantxr/lorem": {
+            "type": "path",
+            "url": "/ryantxr/ancestry/code/packages/Ryantxr/Lorem",
+            "options": {
+                "symlink": true
+            }
+        }
+    }
 }

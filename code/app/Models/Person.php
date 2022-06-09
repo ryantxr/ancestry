@@ -11,7 +11,9 @@ class Person extends Model
     use HasFactory;
     protected $table = 'person';
 
-
+    /**
+     * 
+     */
     public function scopeChildren($query, $id)
     {
         return $query
@@ -20,16 +22,33 @@ class Person extends Model
             ->orderBy('born_year');
     }
 
+    /**
+     * 
+     */
+    public function scopeFindUuid($q, $uuid)
+    {
+        return $q->where('uuid', $uuid);
+    }
+
+    /**
+     * 
+     */
     public function getFather()
     {
         return $this->where('id', $this->father_id)->first();
     }
 
+    /**
+     * 
+     */
     public function getMother()
     {
         return $this->where('id', $this->mother_id)->first();
     }
 
+    /**
+     * 
+     */
     public function getFullNameAttribute()
     {
         $middleNames = $this->middle_names;
@@ -61,7 +80,10 @@ class Person extends Model
         return sprintf('%s %s %s', $this->first, $middleNames, $this->last);
     }
 
-    public function getBornAttribute()
+    /**
+     * dynamic attribute when person was born
+     */
+    public function getBornAttribute() : string
     {
         $str = '';
         if ( $this->born_circa ) {
@@ -79,7 +101,12 @@ class Person extends Model
         return $str;
     }
 
-    public function getAgeSpanAttribute()
+    /**
+     * Returns a string describing the person's age span.
+     * i.e. from - to
+     * @return string
+     */
+    public function getAgeSpanAttribute() : string
     {
         $str = '';
         if ( $this->born_circa ) {
@@ -97,7 +124,12 @@ class Person extends Model
         return $str;
     }
 
-    public function getDiedAttribute()
+    /**
+     * Return a string describing when the person died.
+     * Might just be a year or month/year or a full date
+     * @return string
+     */
+    public function getDiedAttribute() : string
     {
         $str = '';
         if ( $this->died_day ) {
@@ -111,8 +143,12 @@ class Person extends Model
         $str .= $this->died_year;
         return $str;
     }
-
-    public function getDeathAgeAttribute()
+    /**
+     * How old was the person when they died
+     * Returns null if we don't know when they died.
+     * @return ?int 
+     */
+    public function getDeathAgeAttribute() : ?int
     {
         if ( ! $this->born_year || ! $this->died_year ) {
             return null;
