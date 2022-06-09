@@ -67,14 +67,14 @@
     "repositories": {
         "ryantxr/quake": {
             "type": "path",
-            "url": "/ryantxr/ancestry/code/packages/Ryantxr/Quake",
+            "url": "packages/Ryantxr/Quake",
             "options": {
                 "symlink": true
             }
         },
         "ryantxr/lorem": {
             "type": "path",
-            "url": "/ryantxr/ancestry/code/packages/Ryantxr/Lorem",
+            "url": "packages/Ryantxr/Lorem",
             "options": {
                 "symlink": true
             }
